@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "979582578461",
+    "project_id": "sogating-c3b01",
+    "storage_bucket": "sogating-c3b01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979582578461:android:2f5a10018b6595c7ad7bf4",
+        "android_client_info": {
+          "package_name": "com.example.datingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979582578461-291qnmuaj7tmb5qku3pjm8k76k8uvnfi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkTWb5JM_57TmMAYMor555gwwnUOlg-pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979582578461-291qnmuaj7tmb5qku3pjm8k76k8uvnfi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
