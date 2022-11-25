@@ -22,6 +22,7 @@ class MyPageActivity : AppCompatActivity() {
     private val TAG = "MyPageActivity"
 
     private val uid = FirebaseAuthUtils.getUid()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page)
