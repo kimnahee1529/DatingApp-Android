@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.datingapp.R
 import com.example.datingapp.auth.IntroActivity
+import com.example.datingapp.message.MyLikeListActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -15,9 +16,17 @@ class SettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
+        //첫 번째 방법으로는 방금 봤듯이, 앱에서 코드로 notification 띄우기
+
         val mybtn = findViewById<Button>(R.id.myPageBtn)
         mybtn.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)
+            startActivity(intent)
+        }
+
+        val mylikeBtn = findViewById<Button>(R.id.mylikeList)
+        mylikeBtn.setOnClickListener {
+            val intent = Intent(this, MyLikeListActivity::class.java)
             startActivity(intent)
         }
 
