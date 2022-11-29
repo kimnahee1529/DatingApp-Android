@@ -16,7 +16,10 @@ class SettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
-        //첫 번째 방법으로는 방금 봤듯이, 앱에서 코드로 notification 띄우기
+        // 1. 앱에서 코드로 notification 띄우기
+        // 2. Firebase 콘솔에서 앱을 사용하는 모든 사용자에게 push 보내기
+        // 3. Firebase 콘솔에서 특정 사용자에게 메시지 보내기
+        // 4. 앱에서 직접 다른 사람에게 푸시메시지 보내기
 
         val mybtn = findViewById<Button>(R.id.myPageBtn)
         mybtn.setOnClickListener {
