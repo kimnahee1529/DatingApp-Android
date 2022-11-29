@@ -7,11 +7,17 @@ import android.widget.ListView
 import android.widget.Toast
 import com.example.datingapp.R
 import com.example.datingapp.auth.UserDataModel
+import com.example.datingapp.message.fcm.NotiModel
+import com.example.datingapp.message.fcm.PushNotification
+import com.example.datingapp.message.fcm.RetrofitInstance
 import com.example.datingapp.utils.FirebaseAuthUtils
 import com.example.datingapp.utils.FirebaseRef
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 //쌍방으로 좋아요 누른 유저들의 정보를 모아놓은 리스트
 class MyLikeListActivity : AppCompatActivity() {
@@ -51,6 +57,17 @@ class MyLikeListActivity : AppCompatActivity() {
 
 //            Log.d(TAG, likeUserList[position].uid.toString())
             checkMatching(likeUserList[position].uid.toString())
+
+            //notification 문자
+            val notiModel = NotiModel("a", "b")
+
+//            c0uMKap2SiadrHdyO_-tJq:APA91bE__bRkJB9ZY8XWac8UhRpRarqDV_JjQeKekjZwhSOoDqGDwfPhcsZh0Y73ROnPjKe0FGqGhHU3j30avnLqndGidI7j87fJr6cOc0jQQsD0AAtuu-d1ZdAw6bjgbqEnlVoxFVLo
+            val pushModel = PushNotification(notiModel, likeUserList[position].token.toString())
+
+            testPush(pushModel)
+            //여기까지 하면 메시지를 보내기까진 완료.
+            //하지만 어디서 보내주고 어떻게 받고 있는지는 다시 해야 함
+
         }
     }
 
@@ -59,8 +76,8 @@ class MyLikeListActivity : AppCompatActivity() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                Log.e(TAG, otherUid)
-                Log.e(TAG, dataSnapshot.toString())
+//                Log.e(TAG, otherUid)
+//                Log.e(TAG, dataSnapshot.toString())
 
                 if(dataSnapshot.children.count() == 0){
 
@@ -148,5 +165,11 @@ class MyLikeListActivity : AppCompatActivity() {
             }
         }
         FirebaseRef.userInfoRef.addValueEventListener(postListener)
+    }
+
+    //PUSH
+    private fun testPush(notification: PushNotification) = CoroutineScope(Dispatchers.IO).launch {
+        RetrofitInstance.api.postNotification(notification)
+
     }
 }
